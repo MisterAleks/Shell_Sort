@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.*?>
-<?import javafx.embed.swing.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controller">
     <tabs>
@@ -123,7 +111,8 @@
                                 <Font name="System Bold Italic" size="29.0" />
                             </font>
                         </Label>
-                        <TextArea layoutX="300.0" layoutY="57.0" prefHeight="300.0" prefWidth="286.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="57.0" />
+                        <TextArea editable="false" layoutX="300.0" layoutY="57.0" prefHeight="300.0" prefWidth="286.0" text="Программное обеспечение Shell sort.&#10;Версия программы: 1.0&#10;&#10;СПРАВКА Shell sort:   &#10;&#10;Shell sort используется для как учебное&#10;пособие для наглядного отображения &#10;алгоритма сортировки Шелла.&#10;&#10;Визуальное отображение, построенное на &#10;основе алгоритма сортировки Шелла, &#10;использует в качестве сортировки &#10;визуальные объекты - квадраты, внутри &#10;которых записаны их значения.&#10;&#10;Дополнительной и отдельной задачей &#10;проекта является работа с файлами Excel&#10;&#10;Эксплуатация программы Shell sort:&#10;Интерфейс программы достаточно&#10;прост и интуитивно понятен.&#10;&#10;На вкладе &quot;Работа с Excel&quot; вы найдете&#10;всего 3 кнопки:&#10;&#10;&quot;Загрузить&quot; - что значит загрузить данные&#10;из файла Main.xlsx в таблицу на форме&#10;&#10;&quot;По номеру&quot; - сортировка загруженных&#10;данных по номеру при помощи сортировки&#10;Шелла.&#10;&#10;&quot;По пропускам&quot; - сортировка загруженных&#10;данных по пропускам при помощи&#10;сортировки Шелла.&#10;&#10;На вкладке &quot;Визуализация сортировки&quot; &#10;кнопка старт запустит наглядную&#10;визуализацию сортировки Шелла с 12&#10;различными числами, которые случайно&#10;генерируются при каждом новом нажатии &#10;кнопки&#10;&#10;На вкладке &quot;Справка&quot; вы найдете&#10;краткое описание программы" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="57.0" />
+                  <Label layoutX="430.0" layoutY="6.0" prefHeight="17.0" prefWidth="170.0" text="CopyRight © MisterAleks 2016" textFill="#1de10b" />
                     </children></AnchorPane>
             </content>
         </Tab>

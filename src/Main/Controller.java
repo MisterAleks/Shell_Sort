@@ -38,6 +38,21 @@ public class Controller {
     @FXML
     void openExcel(ActionEvent event) throws IOException {
 
+        //Checking for correctness
+        try {
+            new FileInputStream("Main.xlsx");
+        } catch (Exception err) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Упс!");
+            alert.setHeaderText(null);
+            alert.setContentText("Не получается открыть файл. Возможны следующие проблемы:\nФайл отсутствует" +
+            "\nФайл поврежден\nФайл имеет неверный формат\n\nУбедитесь, что файл лежит в одной директории " +
+                    "с программой и имеет название и формат Main.xlsx");
+
+            alert.showAndWait();
+        }
+
         //Open file and assign with WorkBook
         FileInputStream fin = new FileInputStream("Main.xlsx");
         Workbook wb = new XSSFWorkbook(fin);
@@ -82,32 +97,42 @@ public class Controller {
 
         list.getItems().clear();
 
-        //Shell sort
-        int increment = arrayPupil.length / 2;
+        if (data.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        while (increment > 0) {
+            alert.setTitle("Упс!");
+            alert.setHeaderText(null);
+            alert.setContentText("Кажется вы еще не загрузили файл! Попробуйте еще раз после загрузки файла");
 
-            for (int i = increment; i < arrayPupil.length; i++) {
+            alert.showAndWait();
+        } else {
+            //Shell sort
+            int increment = arrayPupil.length / 2;
 
-                int j = i;
-                Pupil temp = arrayPupil[i];
+            while (increment > 0) {
 
-                while (j >= increment && arrayPupil[j - increment].getId() > temp.getId()) {
-                    arrayPupil[j] = arrayPupil[j - increment];
-                    j = j - increment;
+                for (int i = increment; i < arrayPupil.length; i++) {
+
+                    int j = i;
+                    Pupil temp = arrayPupil[i];
+
+                    while (j >= increment && arrayPupil[j - increment].getId() > temp.getId()) {
+                        arrayPupil[j] = arrayPupil[j - increment];
+                        j = j - increment;
+                    }
+
+                    arrayPupil[j] = temp;
                 }
-
-                arrayPupil[j] = temp;
+                increment *= 0.5;
             }
-            increment *= 0.5;
-        }
 
-        //Output to the list
-        for (int i = 0; i < arrayPupil.length; i++) {
-            String s = arrayPupil[i].getId() + " - " + arrayPupil[i].getName() + " Процент пропусков: " +
-                    arrayPupil[i].getMisses();
+            //Output to the list
+            for (int i = 0; i < arrayPupil.length; i++) {
+                String s = arrayPupil[i].getId() + " - " + arrayPupil[i].getName() + " Процент пропусков: " +
+                        arrayPupil[i].getMisses();
 
-            list.getItems().add(s);
+                list.getItems().add(s);
+            }
         }
     }
 
@@ -116,33 +141,44 @@ public class Controller {
 
         list.getItems().clear();
 
-        //Shell sort
-        int increment = arrayPupil.length / 2;
+        if (data.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-        while (increment > 0) {
+            alert.setTitle("Упс!");
+            alert.setHeaderText(null);
+            alert.setContentText("Кажется вы еще не загрузили файл! Попробуйте еще раз после загрузки файла");
 
-            for (int i = increment; i < arrayPupil.length; i++) {
+            alert.showAndWait();
+        } else {
+            //Shell sort
+            int increment = arrayPupil.length / 2;
 
-                int j = i;
-                Pupil temp = arrayPupil[i];
+            while (increment > 0) {
 
-                while (j >= increment && arrayPupil[j - increment].getMisses() > temp.getMisses()) {
-                    arrayPupil[j] = arrayPupil[j - increment];
-                    j = j - increment;
+                for (int i = increment; i < arrayPupil.length; i++) {
+
+                    int j = i;
+                    Pupil temp = arrayPupil[i];
+
+                    while (j >= increment && arrayPupil[j - increment].getMisses() > temp.getMisses()) {
+                        arrayPupil[j] = arrayPupil[j - increment];
+                        j = j - increment;
+                    }
+
+                    arrayPupil[j] = temp;
                 }
-
-                arrayPupil[j] = temp;
+                increment *= 0.5;
             }
-            increment *= 0.5;
+
+            //Output to the list
+            for (int i = 0; i < arrayPupil.length; i++) {
+                String s = arrayPupil[i].getId() + " - " + arrayPupil[i].getName() + " Процент пропусков: " +
+                        arrayPupil[i].getMisses();
+
+                list.getItems().add(s);
+            }
         }
 
-        //Output to the list
-        for (int i = 0; i < arrayPupil.length; i++) {
-            String s = arrayPupil[i].getId() + " - " + arrayPupil[i].getName() + " Процент пропусков: " +
-                    arrayPupil[i].getMisses();
-
-            list.getItems().add(s);
-        }
     }
 
     /////////////////////////////////
@@ -306,7 +342,8 @@ public class Controller {
         task.messageProperty().addListener((observable, oldMessage, newMessage) -> dLabel.setText(newMessage));
 
         //Start a new thread with task settings
-        new Thread(task).start();
+        Thread th = new Thread(task);
+        th.start();
 
         //Visualisation done
     }
