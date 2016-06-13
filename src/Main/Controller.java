@@ -345,6 +345,6 @@ public class Controller {
         Thread th = new Thread(task);
         th.start();
 
-        //Visualisation done
+        //Visualization done
     }
 }
